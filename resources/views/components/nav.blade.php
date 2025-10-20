@@ -29,36 +29,42 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}">
-                                <i class="fas fa-home me-1"></i>Dashboard
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('search') }}">
+                                Cari Penerbangan
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('bookings') }}">
-                                <i class="fas fa-ticket-alt me-1"></i>Pemesanan Saya
+                                Pemesanan Saya
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile.edit') }}">
-                                <i class="fas fa-user me-1"></i>Profil
+                            <a class="nav-link" href="{{ route('profile.index') }}">
+                                Profil
                             </a>
                         </li>
-                        <li class="nav-item ms-3">
-                            <div class="user-menu">
-                                <div class="user-avatar">BS</div>
-                            </div>
-                        </li>
                     </ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-logout">Keluar</button>
+                    </form>
                 </div>
             </div>
         </nav>
     </header>
 
      <!-- Main Dashboard -->
-    <main class="dashboard-container">
+    <main>
         {{ $slot }}
     </main>
 

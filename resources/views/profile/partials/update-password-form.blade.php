@@ -1,4 +1,4 @@
-<div class="content-section" id="password-section">
+{{-- <div class="content-section" id="password-section">
     <div class="section-header">
         <h3><i class="fas fa-lock me-2" style="color: #87CEEB;"></i>Update Password</h3>
     </div>
@@ -53,4 +53,4 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}

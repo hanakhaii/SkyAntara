@@ -11,6 +11,24 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    /**
+     * Display the user's profile.
+     */
+    public function index(Request $request): View
+    {
+        $user = $request->user();
+        
+        $isProfileIncomplete = empty($user->date_of_birth) ||
+                               empty($user->address) ||
+                               empty($user->national_id);
+
+        return view('profile.index', [
+            'user' => $user,
+            'isProfileIncomplete' => $isProfileIncomplete,
+        ]);
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -34,7 +52,9 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.index')->with('status', 'profile-updated');
+
+        dd($request->all());
     }
 
     /**

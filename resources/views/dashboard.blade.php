@@ -4,10 +4,34 @@
         <!-- Welcome Section -->
         <div class="welcome-section">
             <div class="welcome-content">
-                <h1>Selamat Datang Kembali, {{ Auth::user()->name }}! 👋</h1>
+                <h1>Selamat Datang, {{ Auth::user()->name }}! 👋</h1>
                 <p>Siap untuk petualangan berikutnya? Mari jelajahi destinasi impian Anda</p>
             </div>
         </div>
+
+        <!-- Reminder for Complete Profile -->
+        @if ($isProfileIncomplete)
+            <div class="notification-container">
+            <div class="profile-notification pulse">
+                <div class="notification-header">
+                    <div class="notification-icon">!</div>
+                    <h3 class="notification-title">Lengkapi Profil Anda!</h3>
+                </div>
+                <p class="notification-content">
+                    Beberapa informasi penting masih kosong. Profil yang lengkap akan membantu kami memberikan pengalaman yang lebih personal.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-label">Kelengkapan Profil: 40%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                <a href="{{ route('profile.index') }}" class="notification-link">
+                    <i>✏️</i> Klik di sini untuk melengkapi
+                </a>
+            </div>
+        </div>
+        @endif
 
         <!-- Quick Actions -->
         <div class="quick-actions">
@@ -15,19 +39,19 @@
                 <div class="action-icon">
                     <i class="fas fa-search"></i>
                 </div>
-                <h4>Cari Penerbangan</h4>
+                <h4><a href="{{ route('search') }}">Cari Penerbangan</a></h4>
             </div>
             <div class="action-card brown">
                 <div class="action-icon">
                     <i class="fas fa-ticket-alt"></i>
                 </div>
-                <h4>Pemesanan Saya</h4>
+                <h4><a href="{{ route('bookings') }}">Pemesanan Saya</a></h4>
             </div>
             <div class="action-card green">
                 <div class="action-icon">
                     <i class="fas fa-clock"></i>
                 </div>
-                <h4>Check-in Online</h4>
+                <h4><a href="">Check-in Online</a></h4>
             </div>
             <div class="action-card purple">
                 <div class="action-icon">
