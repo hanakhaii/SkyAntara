@@ -313,6 +313,7 @@ body {
 /* Table */
 .table-custom {
     width: 100%;
+    max-width: 100%;
 }
 
 .table-custom thead {

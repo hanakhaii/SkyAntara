@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('route_id')->constrained('flight_routes')->onDelete('cascade');
             $table->string('flight_code');
-            $table->string('aircraft_type');
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
             $table->decimal('price', 10, 2);
-            $table->integer('available_seats')->default(100);
+            $table->integer('total_seats')->default(180);
+            $table->integer('available_seats')->default(180);
             $table->timestamps();
         });
     }
