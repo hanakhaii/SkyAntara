@@ -16,4 +16,9 @@ class FlightRoute extends Model
     {
         return $this->hasMany(FlightSchedule::class, 'route_id');
     }
+
+    public function getRouteNameAttribute()
+    {
+        return "{$this->origin} to {$this->destination}";
+    }
 }

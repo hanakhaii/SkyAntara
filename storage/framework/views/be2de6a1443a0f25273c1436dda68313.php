@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('bookings')); ?>">
+                            <a class="nav-link" href="<?php echo e(route('reservations.index')); ?>">
                                 Pemesanan Saya
                             </a>
                         </li>

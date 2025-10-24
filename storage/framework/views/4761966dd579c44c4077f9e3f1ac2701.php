@@ -32,7 +32,7 @@
             <ul class="features-list">
                 <li>
                     <i class="fas fa-check-circle"></i>
-                    <span>Booking tiket cepat & mudah</span>
+                    <span>Reservasi tiket cepat & mudah</span>
                 </li>
                 <li>
                     <i class="fas fa-check-circle"></i>

@@ -34,6 +34,7 @@
                         <th>Tanggal</th>
                         <th>Status</th>
                         <th>Total</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,27 +43,66 @@
                             <td><strong><?php echo e($reservation->id); ?></strong></td>
                             <td><?php echo e($reservation->user->name ?? 'Tidak diketahui'); ?></td>
                             <td>
-                                <?php echo e($reservation->flight->route->origin ?? '-'); ?> →
-                                <?php echo e($reservation->flight->route->destination ?? '-'); ?>
+                                <?php echo e($reservation->schedule->route->origin ?? '-'); ?> →
+                                <?php echo e($reservation->schedule->route->destination ?? '-'); ?>
 
                             </td>
                             <td><?php echo e($reservation->created_at->format('d M Y')); ?></td>
                             <td>
-                                <span class="badge-status badge-success">
+                                <?php
+                                    $statusClass = [
+                                        'pending' => 'badge-warning',
+                                        'approved' => 'badge-success',
+                                        'cancelled' => 'badge-danger'
+                                    ][$reservation->status ?? 'pending'] ?? 'badge-warning';
+                                ?>
+                                <span class="badge-status <?php echo e($statusClass); ?>">
                                     <?php echo e(ucfirst($reservation->status ?? 'Pending')); ?>
 
                                 </span>
                             </td>
                             <td>Rp <?php echo e(number_format($reservation->total_price, 0, ',', '.')); ?></td>
+                            <td>
+                                <?php if($reservation->status == 'pending'): ?>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Ubah Status
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <form action="<?php echo e(route('admin.reservations.updateStatus', $reservation->id)); ?>" method="POST">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PATCH'); ?>
+                                                <input type="hidden" name="status" value="approved">
+                                                <button type="submit" class="dropdown-item text-success">
+                                                    <i class="fas fa-check me-1"></i> Approve
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="<?php echo e(route('admin.reservations.updateStatus', $reservation->id)); ?>" method="POST">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PATCH'); ?>
+                                                <input type="hidden" name="status" value="cancelled">
+                                                <button type="submit" class="dropdown-item text-danger">
+                                                    <i class="fas fa-times me-1"></i> Cancel
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <?php else: ?>
+                                <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
-                            <td colspan="6" class="text-center">Belum ada pemesanan terbaru.</td>
+                            <td colspan="7" class="text-center">Belum ada pemesanan terbaru.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </div>
-</main>
-<?php /**PATH C:\laragon\www\Skyantara\resources\views/admin/reservations/index.blade.php ENDPATH**/ ?>
+</main><?php /**PATH C:\laragon\www\Skyantara\resources\views/admin/reservations/index.blade.php ENDPATH**/ ?>

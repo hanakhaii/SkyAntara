@@ -15,7 +15,7 @@ class Reservation extends Model
     ];
 
 
-    public function flight()
+    public function schedule()
     {
         return $this->belongsTo(FlightSchedule::class, 'schedule_id');
     }

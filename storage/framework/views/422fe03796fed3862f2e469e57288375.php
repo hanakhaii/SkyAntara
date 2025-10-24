@@ -48,18 +48,6 @@
                 </div>
             </div>
 
-            <div class="stat-card green">
-                <div class="stat-icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
-                <div class="stat-label">Pendapatan Bulan Ini</div>
-                <div class="stat-value">Rp <?php echo e(number_format($totalRevenue ?? 0, 0, ',', '.')); ?></div>
-                <div class="stat-change">
-                    <i class="fas fa-arrow-up"></i>
-                    25% dari bulan lalu
-                </div>
-            </div>
-
             <div class="stat-card orange">
                 <div class="stat-icon">
                     <i class="fas fa-users"></i>
@@ -88,7 +76,6 @@
                             <th>No. Penerbangan</th>
                             <th>Rute</th>
                             <th>Waktu</th>
-                            <th>Status</th>
                             <th>Kapasitas</th>
                             <th>Aksi</th>
                         </tr>
@@ -105,8 +92,7 @@
                                 <?php echo e($flight->departure_time->format('H:i')); ?> → <?php echo e($flight->arrival_time->format('H:i')); ?>
 
                             </td>
-                            <td><span class="badge-status badge-success"><?php echo e($flight->status); ?></span></td>
-                            <td><?php echo e($flight->available_seats); ?></td>
+                            <td><?php echo e($flight->total_seats); ?> / <?php echo e($flight->available_seats); ?></td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="<?php echo e(route('admin.flights.edit', $flight->id)); ?>" class="btn-icon edit"><i class="fas fa-edit"></i></a>
@@ -140,7 +126,7 @@
                 <table class="table-custom">
                     <thead>
                         <tr>
-                            <th>ID Booking</th>
+                            <th>ID Reservation</th>
                             <th>Nama Pemesan</th>
                             <th>Penerbangan</th>
                             <th>Tanggal</th>
@@ -154,7 +140,7 @@
                             <td><strong><?php echo e($reservation->id); ?></strong></td>
                             <td><?php echo e($reservation->user->name ?? 'Tidak diketahui'); ?></td>
                             <td>
-                                <?php echo e($reservation->flight->route->origin ?? '-'); ?> → <?php echo e($reservation->flight->route->destination ?? '-'); ?>
+                                <?php echo e($reservation->schedule->route->origin ?? '-'); ?> → <?php echo e($reservation->schedule->route->destination ?? '-'); ?>
 
                             </td>
                             <td><?php echo e($reservation->created_at->format('d M Y')); ?></td>

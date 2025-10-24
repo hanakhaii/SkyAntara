@@ -13,6 +13,19 @@ class ReservationController extends Controller
         return view('admin.reservations.index', ['title' => 'All Reservations', 'reservations' => $reservations]);
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:approved,cancelled,pending'
+        ]);
+
+        $reservation = Reservation::findOrFail($id);
+        $reservation->status = $request->status;
+        $reservation->save();
+
+        return redirect()->route('admin.reservations.index')->with('success', 'Status reservasi berhasil diubah.');
+    }
+
     public function show($id)
     {
         $reservation = Reservation::find($id);

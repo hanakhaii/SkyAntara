@@ -52,9 +52,9 @@ class PassengerController extends Controller
         return redirect()->route('admin.passengers.index')->with('success', 'Passenger updated successfully.');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $passenger = Passenger::find($request->id);
+        $passenger = Passenger::find($id);
         if ($passenger) {
             $passenger->delete();
             return redirect()->route('admin.passengers.index')->with('success', 'Passenger deleted successfully.');

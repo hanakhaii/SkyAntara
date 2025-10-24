@@ -58,9 +58,9 @@ class FlightScheduleController extends Controller
         return redirect()->route('admin.flights.index')->with('success', 'Flight updated successfully.');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $flight = FlightSchedule::find($request->id);
+        $flight = FlightSchedule::find($id);
         if ($flight) {
             $flight->delete();
             return redirect()->route('admin.flights.index')->with('success', 'Flight deleted successfully.');

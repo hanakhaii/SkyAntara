@@ -48,9 +48,9 @@ class FlightRouteController extends Controller
         return redirect()->route('admin.flightroutes.index')->with('success', 'Flight route updated successfully.');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $route = FlightRoute::find($request->id);
+        $route = FlightRoute::find($id);
         if ($route) {
             $route->delete();
             return redirect()->route('admin.flightroutes.index')->with('success', 'Flight route deleted successfully.');

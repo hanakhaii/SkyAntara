@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label class="form-label">Kapasitas Total <span class="required">*</span></label>
                         <div class="input-icon">
-                            <input type="number" class="form-control" name="total_capacity" placeholder="180"
+                            <input type="number" class="form-control" name="total_seats" placeholder="180"
                                 required>
                             <i class="fas fa-users"></i>
                         </div>

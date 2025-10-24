@@ -1,5 +1,14 @@
-<x-nav title="Cari Penerbangan">
-    @section('form-title', 'Cari Penerbangan - SkyAntara')
+<?php if (isset($component)) { $__componentOriginal3d4e3f5369e04c2cf115b9f764b9480e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3d4e3f5369e04c2cf115b9f764b9480e = $attributes; } ?>
+<?php $component = App\View\Components\Nav::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('nav'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Nav::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Cari Penerbangan']); ?>
+    <?php $__env->startSection('form-title', 'Cari Penerbangan - SkyAntara'); ?>
 
     <main>
         <!-- Hero Section -->
@@ -13,7 +22,7 @@
         <!-- Search Container -->
         <div class="search-container">
             <div class="search-card">
-                <form action="{{ route('search.results') }}" method="GET">
+                <form action="<?php echo e(route('search.results')); ?>" method="GET">
                     <div class="search-form">
                         <!-- From -->
                         <div class="form-group" style="position: relative;">
@@ -21,9 +30,9 @@
                             <i class="fas fa-plane-departure input-icon"></i>
                             <select name="origin" class="form-control">
                                 <option value=""></option>
-                                @foreach ($routes as $route)
-                                    <option value="{{ $route->origin }}">{{ $route->origin }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $routes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $route): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($route->origin); ?>"><?php echo e($route->origin); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                             <button type="button" class="swap-button">
                                 <i class="fas fa-exchange-alt"></i>
@@ -36,9 +45,9 @@
                             <i class="fas fa-plane-arrival input-icon"></i>
                             <select name="destination" class="form-control">
                                 <option value=""></option>
-                                @foreach ($routes as $route)
-                                    <option value="{{ $route->destination }}">{{ $route->destination }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $routes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $route): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($route->destination); ?>"><?php echo e($route->destination); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                     </div>
@@ -152,4 +161,14 @@
         //     alert('Mencari penerbangan... Fitur ini akan menampilkan hasil pencarian!');
         // });
     </script>
-</x-nav>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3d4e3f5369e04c2cf115b9f764b9480e)): ?>
+<?php $attributes = $__attributesOriginal3d4e3f5369e04c2cf115b9f764b9480e; ?>
+<?php unset($__attributesOriginal3d4e3f5369e04c2cf115b9f764b9480e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3d4e3f5369e04c2cf115b9f764b9480e)): ?>
+<?php $component = $__componentOriginal3d4e3f5369e04c2cf115b9f764b9480e; ?>
+<?php unset($__componentOriginal3d4e3f5369e04c2cf115b9f764b9480e); ?>
+<?php endif; ?>
+<?php /**PATH C:\laragon\www\Skyantara\resources\views/search.blade.php ENDPATH**/ ?>

@@ -39,18 +39,6 @@
                 </div>
             </div>
 
-            <div class="stat-card green">
-                <div class="stat-icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
-                <div class="stat-label">Pendapatan Bulan Ini</div>
-                <div class="stat-value">Rp {{ number_format($totalRevenue ?? 0, 0, ',', '.') }}</div>
-                <div class="stat-change">
-                    <i class="fas fa-arrow-up"></i>
-                    25% dari bulan lalu
-                </div>
-            </div>
-
             <div class="stat-card orange">
                 <div class="stat-icon">
                     <i class="fas fa-users"></i>
@@ -79,7 +67,6 @@
                             <th>No. Penerbangan</th>
                             <th>Rute</th>
                             <th>Waktu</th>
-                            <th>Status</th>
                             <th>Kapasitas</th>
                             <th>Aksi</th>
                         </tr>
@@ -94,8 +81,7 @@
                             <td>
                                 {{ $flight->departure_time->format('H:i') }} → {{ $flight->arrival_time->format('H:i') }}
                             </td>
-                            <td><span class="badge-status badge-success">{{ $flight->status }}</span></td>
-                            <td>{{ $flight->available_seats }}</td>
+                            <td>{{ $flight->total_seats }} / {{ $flight->available_seats }}</td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('admin.flights.edit', $flight->id) }}" class="btn-icon edit"><i class="fas fa-edit"></i></a>
@@ -129,7 +115,7 @@
                 <table class="table-custom">
                     <thead>
                         <tr>
-                            <th>ID Booking</th>
+                            <th>ID Reservation</th>
                             <th>Nama Pemesan</th>
                             <th>Penerbangan</th>
                             <th>Tanggal</th>
@@ -143,7 +129,7 @@
                             <td><strong>{{ $reservation->id }}</strong></td>
                             <td>{{ $reservation->user->name ?? 'Tidak diketahui' }}</td>
                             <td>
-                                {{ $reservation->flight->route->origin ?? '-' }} → {{ $reservation->flight->route->destination ?? '-' }}
+                                {{ $reservation->schedule->route->origin ?? '-' }} → {{ $reservation->schedule->route->destination ?? '-' }}
                             </td>
                             <td>{{ $reservation->created_at->format('d M Y') }}</td>
                             <td>

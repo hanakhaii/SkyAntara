@@ -169,7 +169,7 @@
                 <div class="col-md-3 footer-section">
                     <h5>Layanan</h5>
                     <ul>
-                        <li><a href="#">Booking Online</a></li>
+                        <li><a href="#">Reservation Online</a></li>
                         <li><a href="#">Check-in</a></li>
                         <li><a href="#">Status Penerbangan</a></li>
                         <li><a href="#">Bagasi</a></li>

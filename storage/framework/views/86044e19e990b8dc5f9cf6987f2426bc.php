@@ -24,9 +24,8 @@
                             <th>Kode Penerbangan</th>
                             <th>Rute</th>
                             <th>Waktu</th>
-                            <th>Durasi</th>
                             <th>Harga</th>
-                            <th>Kursi Tersedia</th>
+                            <th>Kapasitas</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -40,10 +39,6 @@
                                 </td>
                                 <td>
                                     <?php echo e($flight->departure_time->format('H:i') ?? '-'); ?> → <?php echo e($flight->arrival_time->format('H:i') ?? '-'); ?>
-
-                                </td>
-                                <td>
-                                    <?php echo e($flight->route->duration); ?>
 
                                 </td>
                                 <td>Rp<?php echo e(number_format($flight->price, 0, ',', '.')); ?></td>

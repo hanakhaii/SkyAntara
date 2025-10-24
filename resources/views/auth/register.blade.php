@@ -28,7 +28,7 @@
                     <span>SkyAntara</span>
                 </div>
                 <h2>Daftar Sekarang</h2>
-                <p>Buat akun dan nikmati kemudahan booking tiket pesawat</p>
+                <p>Buat akun dan nikmati kemudahan reservasi tiket pesawat</p>
             </div>
 
             <form method="POST" action="{{ route('register') }}">

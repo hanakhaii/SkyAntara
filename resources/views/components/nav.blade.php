@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('bookings') }}">
+                            <a class="nav-link" href="{{ route('reservations.index') }}">
                                 Pemesanan Saya
                             </a>
                         </li>
